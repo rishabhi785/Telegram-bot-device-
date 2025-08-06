@@ -138,7 +138,7 @@ async def show_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ["GET REDEEM CODE"]
         ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-    text = "*🏠 get free redeem code.*"
+    text = "*🏠 WELCOME GET FREE REDEEM CODE*"
 
     try:
         if hasattr(update, 'callback_query') and update.callback_query:
