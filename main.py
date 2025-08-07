@@ -10,7 +10,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKe
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
 
 # Bot configuration
-BOT_TOKEN = "8052913761:AAEkusCiEw5xNDT_U-SzOUvURg7LI-wXZwI"
+BOT_TOKEN = "8052913761:AAGlMmCzhJQTAiKRKwVkoviIWpOh9XNtX9U"
 CHANNEL_LINK = "https://t.me/freepromochannels"
 GROUP_LINK = "https://t.me/promomogroup"
 CHANNEL_ID = -1002729077216
@@ -96,7 +96,22 @@ async def transfer_money_via_vsv(recipient_wallet, amount, user_id):
                     result = await response.text()
                     print(f"VSV API Response: {result}")  # Debug logging
                     
-                    # Check if the response indicates success
+                    # Parse JSON response from VSV Gateway
+                    try:
+                        import json
+                        json_response = json.loads(result)
+                        
+                        if isinstance(json_response, dict) and 'status' in json_response:
+                            if json_response['status'].lower() == 'success':
+                                return {'success': True, 'transaction_id': f'VSV_{user_id}_{datetime.now().strftime("%Y%m%d_%H%M%S")}'}
+                            else:
+                                error_msg = json_response.get('message', 'Transfer failed')
+                                return {'success': False, 'error': f'{error_msg}'}
+                    except json.JSONDecodeError:
+                        # Fallback to original text checking
+                        pass
+                    
+                    # Check if the response indicates success (original fallback)
                     if "success" in result.lower() or "completed" in result.lower() or "sent" in result.lower():
                         return {'success': True, 'transaction_id': f'VSV_{user_id}_{datetime.now().strftime("%Y%m%d_%H%M%S")}'}
                     else:
