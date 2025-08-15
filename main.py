@@ -10,7 +10,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKe
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
 
 # Bot configuration
-BOT_TOKEN = "8052913761:AAGlMmCzhJQTAiKRKwVkoviIWpOh9XNtX9U"
+BOT_TOKEN = "8245678437:AAFp59aBl3hYU3g_44QrgmAc9lkT5HchtP8"
 CHANNEL_LINK = "https://t.me/freepromochannels"
 GROUP_LINK = "https://t.me/promomogroup"
 CHANNEL_ID = -1002729077216
@@ -21,7 +21,7 @@ ADMIN_ID = "6736711885"  # Your admin chat ID
 
 # VSV API Configuration
 VSV_API_URL = "https://vsv-gateway-solutions.co.in/Api/api.php"
-VSV_API_TOKEN = "DGXXDQHP"
+VSV_API_TOKEN = "RKMDLSMZ"
 
 # Data files
 USERS_FILE = "users_data.json"
@@ -30,9 +30,9 @@ CONFIG_FILE = "config.json"
 
 # Default configuration
 DEFAULT_CONFIG = {
-    "min_withdrawal": 15,
+    "min_withdrawal": 1,
     "daily_bonus": 1,
-    "referral_bonus": 2.5
+    "referral_bonus": 2
 }
 
 # Load configuration
